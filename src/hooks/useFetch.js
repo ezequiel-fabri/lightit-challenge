@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAberturas, getEquipamientos, getTerminaciones } from "../service";
+import { ABERTURAS, EQUIPAMIENTO, TERMINACIONES } from "../constants";
 
 const services = {
-  Aberturas: getAberturas,
-  Equipamiento: getEquipamientos,
-  Terminaciones: getTerminaciones,
+  [ABERTURAS]: getAberturas,
+  [EQUIPAMIENTO]: getEquipamientos,
+  [TERMINACIONES]: getTerminaciones,
 };
 
 export const useFetch = (category, initialValue) => {

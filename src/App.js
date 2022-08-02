@@ -7,6 +7,7 @@ import MainLayout from "./components/MainLayout";
 import Drawer from "./components/Drawer";
 import MainProvider from "./context/MainContext";
 function App() {
+  console.log("render");
   return (
     <MainProvider>
       <Header />
