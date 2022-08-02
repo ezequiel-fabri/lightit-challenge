@@ -3,13 +3,10 @@ import { createContext, useState } from "react";
 export const MainContext = createContext();
 
 const MainProvider = ({ children }) => {
-  const [open, setOpen] = useState(false);
-  const handleToggle = () => setOpen((prev) => !prev);
+  const [items, setItems] = useState([]);
 
   return (
-    <MainContext.Provider value={{ handleToggle, open }}>
-      {children}
-    </MainContext.Provider>
+    <MainContext.Provider value={{ items }}>{children}</MainContext.Provider>
   );
 };
 
