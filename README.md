@@ -1,6 +1,6 @@
 # Light-it Challenge
 
-I enjoyed doing the challenge
+I enjoyed doing the challenge, hope you like the implementation
 
 ## Start instructions: 
 - Clone the repo
