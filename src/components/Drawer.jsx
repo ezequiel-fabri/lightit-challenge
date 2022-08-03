@@ -1,29 +1,25 @@
 import { useState } from "react";
+import { useMainContext } from "../hooks/useMainContext";
 import Arrow from "../assets/activo.png";
 
 const Button = ({ onClick }) => {
   return (
-    <span
+    <button
       onClick={onClick}
       className="w-7 h-16 -right-7 absolute top-2/4 -translate-y-2/4 bg-neutral-50 rounded-r-lg flex items-center justify-center cursor-pointer"
     >
       <img src={Arrow} className="w-5" />
-    </span>
+    </button>
   );
 };
 
-const Drawer = ({ open = false, onToggle, onClose, children }) => {
-  const [isOpen, setIsOpen] = useState(open);
-  const openDialog = typeof onToggle === "function" ? open : isOpen;
+const Drawer = ({ onClose = () => null, children }) => {
+  // onToggle and onClose functions are optional since the component doesn't need to be controlled
+  const { openDialog, handleClose } = useMainContext();
 
-  const handleClick = () => {
-    setIsOpen((prevValue) => !prevValue);
-  };
-
-  const handleToggle = () => {
-    if (openDialog) onClose();
-    if (typeof onToggle === "function") onToggle();
-    else handleClick();
+  const handleCloseDialog = () => {
+    handleClose();
+    onClose();
   };
 
   return (
@@ -33,7 +29,7 @@ const Drawer = ({ open = false, onToggle, onClose, children }) => {
       }`}
     >
       {children}
-      {openDialog && <Button onClick={handleToggle} />}
+      {openDialog && <Button onClick={handleCloseDialog} />}
     </div>
   );
 };

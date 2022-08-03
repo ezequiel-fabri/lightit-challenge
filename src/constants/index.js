@@ -11,3 +11,9 @@ export const menu = [
   { name: EQUIPAMIENTO, id: 1, icon: Item2 },
   { name: TERMINACIONES, id: 2, icon: Item3 },
 ];
+
+export const dropdownOptions = [
+  { name: "Guardar y salir" },
+  { name: "Salir sin guardar" },
+  { name: "Guardar y continuar" },
+];

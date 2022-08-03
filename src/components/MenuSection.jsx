@@ -6,9 +6,11 @@ import Category from "../common/Category";
 const MenuSection = ({ category = "Aberturas" }) => {
   const [data, isLoading] = useFetch(category, []);
   const [currentCategory, setCurrenCategory] = useState({});
+  const resetCategory = () => setCurrenCategory({});
 
   useEffect(() => {
-    setCurrenCategory({});
+    // reset current selected category if user selects another item in the menu
+    resetCategory();
   }, [category]);
 
   if (currentCategory.name)
@@ -16,7 +18,8 @@ const MenuSection = ({ category = "Aberturas" }) => {
       <Visualizer
         items={currentCategory.items}
         title={currentCategory.name}
-        onBack={() => setCurrenCategory({})}
+        // fired when user click on breadcrumb
+        onBack={resetCategory}
         category={category}
       />
     );

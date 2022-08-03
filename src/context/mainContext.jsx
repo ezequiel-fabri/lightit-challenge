@@ -1,12 +1,23 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback } from "react";
 
 export const MainContext = createContext();
 
 const MainProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleClose = useCallback(() => setOpenDialog(false), []);
+  const handleOpen = useCallback(() => setOpenDialog(true), []);
+  const handleToggle = useCallback(
+    () => setOpenDialog((prevValue) => !prevValue),
+    []
+  );
 
   return (
-    <MainContext.Provider value={{ items }}>{children}</MainContext.Provider>
+    <MainContext.Provider
+      value={{ openDialog, handleClose, handleOpen, handleToggle }}
+    >
+      {children}
+    </MainContext.Provider>
   );
 };
 

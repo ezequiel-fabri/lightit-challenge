@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { menu } from "../constants";
+import { useMainContext } from "../hooks/useMainContext";
 import Drawer from "./Drawer";
 import MenuSection from "./MenuSection";
 import NavItem from "../common/NavItem";
 
 const SideNav = () => {
-  const [open, setOpen] = useState(false);
+  const { openDialog, handleToggle, handleOpen } = useMainContext();
   const [buttonClicked, setButtonClicked] = useState("");
-  const toggleDialog = () => setOpen((prevValue) => !prevValue);
 
-  const onCloseDialog = () => setButtonClicked("");
+  const onCloseDialog = () => {
+    setButtonClicked("");
+  };
 
   return (
     <>
@@ -22,15 +24,15 @@ const SideNav = () => {
               img={navItem.icon}
               isClicked={buttonClicked === navItem.name}
               onClick={() => {
-                setOpen(true);
+                handleOpen();
                 setButtonClicked(navItem.name);
               }}
             />
           ))}
         </nav>
       </div>
-      <Drawer open={open} onToggle={toggleDialog} onClose={onCloseDialog}>
-        {open && <MenuSection category={buttonClicked} />}
+      <Drawer onToggle={handleToggle} onClose={onCloseDialog}>
+        {openDialog && <MenuSection category={buttonClicked} />}
       </Drawer>
     </>
   );
