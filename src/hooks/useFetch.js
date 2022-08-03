@@ -21,7 +21,7 @@ export const useFetch = (category, initialValue) => {
       })
       .finally(() => setIsLoading(false));
     return () => (isMounted = false);
-  }, [category]);
+  }, [category, service]);
 
   return [data, isLoading];
 };

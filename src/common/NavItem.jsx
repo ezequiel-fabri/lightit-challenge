@@ -8,7 +8,7 @@ const NavItem = ({ img, name, isClicked, onClick, ...rest }) => {
       onClick={onClick}
       {...rest}
     >
-      <img className="w-9" src={img} />
+      <img className="w-9" src={img} alt="nav-item" />
       <span className="text-sm">{name}</span>
     </div>
   );
