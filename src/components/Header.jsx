@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { dropdownOptions } from "../constants";
 import Logo from "../common/Logo";
-import Chevron from "../assets/activo.png";
+import Dropdown from "../common/Dropdown";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,30 +21,13 @@ const Header = () => {
             <span className="text-lg">Home</span>
           </div>
         </div>
-        <div className="flex rounded-md justify-between bg-white divide-x w-52 relative py-2">
-          <div className="flex items-center justify-center px-2 basis-4/5">
-            {optionSelected}
-          </div>
-          <button
-            className="flex items-center justify-center basis-1/5 cursor-pointer"
-            onClick={() => setOpenMenu((prevValue) => !prevValue)}
-          >
-            <img src={Chevron} alt="view-options" className="-rotate-90 w-4" />
-          </button>
-          {openMenu && (
-            <div className="grid grid-cols-1 divide-y absolute left-0 right-0 top-[110%] bg-white rounded-b-md">
-              {dropdownOptions.map((option) => (
-                <div
-                  className="p-2 cursor-pointer"
-                  key={option.name}
-                  onClick={() => handleSelect(option.name)}
-                >
-                  {option.name}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <Dropdown
+          options={dropdownOptions}
+          value={optionSelected}
+          open={openMenu}
+          onToggle={() => setOpenMenu((prev) => !prev)}
+          onClick={handleSelect}
+        />
       </div>
     </div>
   );
