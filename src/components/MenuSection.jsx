@@ -28,7 +28,7 @@ const MenuSection = ({ category = "Aberturas" }) => {
     <div className="container w-full p-5">
       <h3 className="text-gray-800 font-semibold text-xl mb-5">{category}</h3>
       {isLoading ? (
-        "Loading..."
+        "Cargando..."
       ) : (
         <div className="container text-slate-800">
           {data.map((category) => (

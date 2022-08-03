@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { dropdownOptions } from "../constants";
+import Logo from "../common/Logo";
 import Chevron from "../assets/activo.png";
 
 const Header = () => {
@@ -13,12 +14,14 @@ const Header = () => {
 
   return (
     <div className="bg-zinc-900 w-full h-20">
-      <div className="container md mx-auto flex justify-between p-4">
+      <div className="container md mx-auto flex justify-between items-center p-4">
         <div className="flex-none text-slate-300">
-          <div className="logo">Logo</div>
-          <div className="edit">Editar medidas</div>
+          <div className="flex items-center cursor-pointer">
+            <Logo />
+            <span className="text-lg">Home</span>
+          </div>
         </div>
-        <div className="flex rounded-md justify-between bg-white divide-x w-52 relative">
+        <div className="flex rounded-md justify-between bg-white divide-x w-52 relative py-2">
           <div className="flex items-center justify-center px-2 basis-4/5">
             {optionSelected}
           </div>
