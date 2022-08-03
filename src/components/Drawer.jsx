@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useMainContext } from "../hooks/useMainContext";
 import Arrow from "../assets/activo.png";
 
@@ -14,9 +13,7 @@ const Button = ({ onClick }) => {
 };
 
 const Drawer = ({ onClose = () => null, children }) => {
-  // onToggle and onClose functions are optional since the component doesn't need to be controlled
   const { openDialog, handleClose } = useMainContext();
-
   const handleCloseDialog = () => {
     handleClose();
     onClose();
